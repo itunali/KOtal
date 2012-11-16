@@ -25,7 +25,7 @@ class Kotal_View extends Kohana_View {
 	 * @var array Cached list of excluded controllers
 	 */
 	protected static $_tal_exclude;
-	
+
 	/**
 	 * @var bool Cached global setting to enable tal on views.
 	 */
@@ -42,12 +42,12 @@ class Kotal_View extends Kohana_View {
 	public function __construct($file = NULL, array $data = NULL)
 	{
 		parent::__construct($file, $data);
-		
+
 		// Load the global setting if not already done.
 		if (self::$_tal_enable_default === NULL) {
 			self::$_tal_enable_default = Kohana::$config->load('kotal.enabled');
 		}
-		
+
 		// Use the global setting by default.
 		$this->use_tal(self::$_tal_enable_default);
 	}
@@ -197,7 +197,7 @@ class Kotal_View extends Kohana_View {
 			// Make sure the core of PHPTAL is loaded now, we'll need it.
 			require_once Kohana_Core::find_file('vendor', 'phptal/PHPTAL');
 		}
-		
+
 		return $this;
 	}
 
@@ -258,7 +258,7 @@ class Kotal_View extends Kohana_View {
 	protected function _check_tal_exclusions($clear = FALSE)
 	{
 		// Fetch current controller
-		$controller = UTF8::strtolower(Request::current()->controller());
+		$controller = UTF8::strtolower(is_null(Request::current()) ? null : Request::current()->controller());
 
 		// Cache exclusion list if it doesn't exist (saves calling strtolower)
 		if ($clear == TRUE OR self::$_tal_exclude === NULL)
