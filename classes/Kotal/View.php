@@ -274,4 +274,24 @@ class Kotal_View extends Kohana_View {
 
 		return $this->use_tal();
 	}
+
+	/**
+	 * Adds new prefilter
+	 *
+	 * @param PHPTAL_PreFilter Filter instance
+	 *
+	 * @return Kotal_View
+	 */
+	public function add_pre_filter(PHPTAL_PreFilter $filter)
+	{
+		if (empty($this->_tal))
+		{
+			// Create PHPTAL object for this setting to take effect
+			$this->_tal = new PHPTAL;
+		}
+
+		$this->_tal->addPreFilter($filter);
+
+		return $this;
+	}
 }
