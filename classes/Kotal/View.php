@@ -195,7 +195,7 @@ class Kotal_View extends Kohana_View {
 
 		if ($this->_tal_enable = (bool) $tal) {
 			// Make sure the core of PHPTAL is loaded now, we'll need it.
-			require_once Kohana_Core::find_file('vendor', 'phptal/PHPTAL');
+			require_once Kohana_Core::find_file('vendor', 'phptal/classes/PHPTAL');
 		}
 
 		return $this;
